@@ -21,7 +21,7 @@ function App() {
     // a function to fetch   quote
   const fetchNewQuote = async () => {
     try {
-      const response = await fetch("http://api.quotable.io/random");
+      const response = await fetch("https://api.quotable.io/random");
       const data = await response.json();
       // console.log(data.content);
       setQuote(data.content);

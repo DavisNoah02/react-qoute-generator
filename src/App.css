@@ -130,3 +130,10 @@
   transform: scale(1.2); 
   color: rgb(13, 193, 64); 
 }
+@media (max-width: 768px) {
+  .quote {
+    width: 100%; 
+    height: auto; 
+  }
+}
+

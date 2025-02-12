@@ -18,7 +18,7 @@ function App() {
     try {
       console.log("Fetching quotes...");
       // Make a GET request to the API to fetch a new quote
-      const response = await fetch("http://api.quotable.io/random");
+      const response = await fetch("http://api.quotable.io/random"); 
       if (!response.ok) {
         throw new Error(`Failed to fetch quotes: ${response.status} ${response.statusText}`);
       }
@@ -68,8 +68,17 @@ function App() {
       });
   };
     /**
-   * Tweets the current quote.
+   * share current quote on Socials
    */
+    const shareOnTikTok = () => {
+      const tiktokUrl = `https://www.tiktok.com/create/react?q=${encodeURIComponent(`"${quote.text}" - ${quote.author}`)}`;
+      window.open(tiktokUrl, "_blank");
+    };
+
+    const shareOnInstagram = () => {
+      const instagramUrl = `https://www.instagram.com/direct/new/?text=${encodeURIComponent(`"${quote.text}" - ${quote.author}`)}`;
+      window.open(instagramUrl, "_blank");
+    };
     const tweetQuote = () => {
       const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`"${quote.text}" - ${quote.author}`)}`;
       window.open(tweetUrl, "_blank");
@@ -94,10 +103,15 @@ function App() {
         {copied && <span className="copied-tooltip">Copied!</span>}
       </span>
 
-        <div className="icons">
-        <img src={twitter_icon} onClick={ () => tweetQuote() } alt="Share on Twitter" />
-      </div>
-      
+        <div className="share">
+          <span>Share: </span>
+          <div className="icons">
+            <img src={twitter_icon} onClick={ () => tweetQuote() } alt="Share on Twitter" />
+            <img src="https://img.icons8.com/ios-filled/50/000000/tiktok.png" onClick={ () => shareOnTikTok() } alt="Share on TikTok" />
+            <img src="https://img.icons8.com/ios-filled/50/000000/instagram-new.png" onClick={ () => shareOnInstagram() } alt="Share on Instagram" />
+          </div>
+        </div>
+        
       </div>
       <button className="btn" onClick={fetchNewQuote} disabled={loading}>
         Generate Quote

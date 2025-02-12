@@ -43,6 +43,7 @@
   position: absolute;
   top: 20px;
   right: 20px;
+  cursor: pointer;
   z-index: 1;
   display: flex;
   flex-direction: row;
@@ -88,29 +89,6 @@
   visibility: visible;
   opacity:1;
 }
-
-/* .btn {
-  display: inline-block;
-  border: none;
-  margin-right: 10px;
-  background: #0b2b09;
-  color: #fff;
-  padding: 15px 30px;
-  border-radius: 5px;
-  cursor: pointer;
-  outline: none;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 150px;
-  text-align: center;
-  box-shadow: 0 5px 10px rgba(236, 108, 108, 0.1);
-}
-
-.btn:hover {
-  background: #054b20;
- transition: transform 0.5s ease-in-out;
-} */
 
 .btn {
   padding: 1em 3em;

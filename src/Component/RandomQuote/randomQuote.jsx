@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './randomQuote.css';
 import twitter_icon from '../assets/twitter.png';
-import tiktok_icon from '../assets/tik-tok.png';
-import instagram_icon from '../assets/instagram.png';
+import linkedIn_icon from '../assets/linkedin.png';
+import whatsapp_icon from '../assets/whatsapp.png';
 
 function App() {
   // Initialize the state variables
@@ -72,21 +72,21 @@ function App() {
     /**
    * share current quotes on Socials
    */
-    const shareOnTikTok = () => {
-      const tiktokUrl = `https://www.tiktok.com/create/react?q=${encodeURIComponent(`"${quote.text}" - ${quote.author}`)}`;
-      window.open(tiktokUrl, "_blank");
+    const shareOnLinkedIn = () => {
+      const quoteText = `"${quote.text}" - ${quote.author}`;
+      const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(quoteText)}`;
+      window.open(linkedInUrl, "_blank");
     };
-
-    const shareOnInstagram = () => {
-      const instagramUrl = `https://www.instagram.com/direct/new/?text=${encodeURIComponent(`"${quote.text}" - ${quote.author}`)}`;
-      window.open(instagramUrl, "_blank");
+    const shareOnWhatsApp = () => {
+      const quoteText = `"${quote.text}" - ${quote.author}`;
+      const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(quoteText)}`;
+      window.open(whatsappUrl, "_blank");
     };
+    
     const tweetQuote = () => {
       const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`"${quote.text}" - ${quote.author}`)}`;
       window.open(tweetUrl, "_blank");
     };
-
-
   // rendering the component
   return (
     <div className="App">
@@ -109,11 +109,12 @@ function App() {
           
           <div className="icons">
             <img src={twitter_icon} onClick={ () => tweetQuote() } alt="Share on Twitter" />
-            <img src={tiktok_icon} onClick={ () => shareOnTikTok() } alt="Share on TikTok" />
-            <img src={instagram_icon} onClick={ () => shareOnInstagram() } alt="Share on Instagram" />
+            <img src={ linkedIn_icon} onClick={ () => shareOnLinkedIn() } alt="Share on LinkedIn" />
+            <img src={whatsapp_icon} onClick={ () => shareOnWhatsApp() } alt="Share on WhatsApp" />
           </div>
         </div>
         
+
       </div>
       <button className="btn" onClick={fetchNewQuote} disabled={loading}>
         Generate Quote

@@ -10,6 +10,7 @@
 
   
 .quote{
+  position: relative;
   background: url(../assets/filip-zrnzevic-QsWG0kjPQRY-unsplash.jpg) no-repeat center center/cover;
   background-size: cover;
   width: 850px;
@@ -37,25 +38,37 @@
   padding: 0;
   color: #000000; /* add this line */
 }
+/* social Icons */
+.icons {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.icons img {
+  transform: scale(1.2);
+  display: flex;
+  margin: 20px;
+  width: 40px; 
+  height: 40px;
+}
+/* copy icon */
 .copy-icon {
   cursor: pointer;
-  font-size: 48px;
-  margin-left: 10px;
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  z-index: 1;
+  color: red; /* Primary color */
 }
-
 .copy-icon i {
-  margin-top: 30px;
   font-size: 28px;
-  position: fixed;
 }
-
-.fa-copy {
-  /* filter: invert(100%); */
-  color: #bac1b8; /* Primary color */
-}
-
-.fa-copy:hover {
-  color: #ffffff; /* Secondary color */
+.copy-icon:hover {
+  color: #ca1c1c; /* Secondary color */
 }
 
 .copied-tooltip {
@@ -71,12 +84,12 @@
   opacity: 2;
   transition:  0.8s ease-out;
 }
-
 .copy-icon:hover .copied-tooltip {
   visibility: visible;
   opacity:1;
 }
-.btn {
+
+/* .btn {
   display: inline-block;
   border: none;
   margin-right: 10px;
@@ -93,30 +106,134 @@
   text-align: center;
   box-shadow: 0 5px 10px rgba(236, 108, 108, 0.1);
 }
-.icons {
-  position: absolute;
-  top: 200px;
-  right: 100px;
-  z-index: 1;
-}
-.icons img {
-  transform: scale(1.2);
-  display: flex;
-  
-  width: 50px; /* adjust the width to your desired size */
-  height: 50px; /* adjust the height to your desired size */
-}
 
 .btn:hover {
   background: #054b20;
  transition: transform 0.5s ease-in-out;
+} */
+
+.btn {
+  padding: 1em 3em;
+  border: none;
+  margin-top: 20px;
+  outline: none;
+  color: rgb(15, 212, 28);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btn:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-button 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-button {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.btn:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
 }
 
 
+/* Responsive Design */
 @media (max-width: 768px) {
   .quote {
     width: 100%; 
     height: auto; 
   }
+  .quote small {
+    font-size: 1.2em;
+  }
+  .quote h2 {
+    font-size: 2em;
+  }
+  .icons {
+    top: 10px;
+    right: 10px;
+  }
+  .icons img {
+    transform: scale(1);
+    display: flex;
+    width: 30px;
+    height: 30px;
+    margin-top: -10px;
+  }
+  .btn {
+    padding: 0.4em 1.5em;
+    font-size: 16px;
+  }
 }
+@media (max-width: 480px) {
+  .btn {
+    padding: 0.3em 1em;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 320px) {
+  .btn {
+    padding: 0.2em 0.8em;
+    font-size: 12px;
+  }
+  .icons {
+    top: 2px;
+    right: 2px;
+  }
+  .icons img {
+    width: 15px;
+    height: 15px;
+    margin: 2px;
+  }
+}
+
+
+
+
+
 

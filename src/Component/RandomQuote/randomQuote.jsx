@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './randomQuote.css';
-import twitter_icon from '../assets/X ICON2.png';
+import twitter_icon from '../assets/twitter.png';
+import tiktok_icon from '../assets/tik-tok.png';
+import instagram_icon from '../assets/instagram.png';
 
 function App() {
   // Initialize the state variables
@@ -68,7 +70,7 @@ function App() {
       });
   };
     /**
-   * share current quote on Socials
+   * share current quotes on Socials
    */
     const shareOnTikTok = () => {
       const tiktokUrl = `https://www.tiktok.com/create/react?q=${encodeURIComponent(`"${quote.text}" - ${quote.author}`)}`;
@@ -99,16 +101,16 @@ function App() {
           </>
         )}
         <span className="copy-icon" onClick={copyToClipboard} title="Copy to clipboard">
-        <i className="fas fa-copy" />
-        {copied && <span className="copied-tooltip">Copied!</span>}
-      </span>
+          <i className="fas fa-copy" />
+          {copied && <span className="copied-tooltip">Copied!</span>}
+       </span>
 
         <div className="share">
-          <span>Share: </span>
+          
           <div className="icons">
             <img src={twitter_icon} onClick={ () => tweetQuote() } alt="Share on Twitter" />
-            <img src="https://img.icons8.com/ios-filled/50/000000/tiktok.png" onClick={ () => shareOnTikTok() } alt="Share on TikTok" />
-            <img src="https://img.icons8.com/ios-filled/50/000000/instagram-new.png" onClick={ () => shareOnInstagram() } alt="Share on Instagram" />
+            <img src={tiktok_icon} onClick={ () => shareOnTikTok() } alt="Share on TikTok" />
+            <img src={instagram_icon} onClick={ () => shareOnInstagram() } alt="Share on Instagram" />
           </div>
         </div>
         

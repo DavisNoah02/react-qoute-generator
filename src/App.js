@@ -5,7 +5,7 @@ import RandomQuote from './Component/RandomQuote/randomQuote';
 
 const App = () => {
   return (
-    
+  
     <div>
       <RandomQuote />
     </div>

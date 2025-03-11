@@ -18,22 +18,24 @@ function App() {
   const fetchNewQuote = async () => {
     setLoading(true);
     try {
-      console.log("Fetching quotes...");
-      // Make a GET request to the API to fetch a new quote
-      const response = await fetch("http://api.quotable.io/random"); 
+      console.log("Fetching quote...");
+      const response = await fetch("http://api.quotable.io/random");
+    
+      
       if (!response.ok) {
         throw new Error(`Failed to fetch quotes: ${response.status} ${response.statusText}`);
       }
-      // Parse the response data as JSON
+  
       const data = await response.json();
-
+      console.log("API Response:", data); // Debugging log
+  
       setQuote({
         text: data.content,
         author: data.author || "Unknown"
       });
       setCopied(false);
     } catch (error) {
-      // console.error("Error fetching quote:", error);
+      console.error("Error fetching quote:", error.message);
       setQuote({
         text: "An error occurred while fetching the quote. Please try again.",
         author: "Error"
@@ -43,10 +45,54 @@ function App() {
     }
   };
 
+
+
+  
+  // const fetchNewQuote = async () => {
+  //   setLoading(true);
+  //   try {
+  //     console.log("Fetching quote...");
+      
+  //     const response = await fetch("https://api.allorigins.win/get?url=" + encodeURIComponent("https://zenquotes.io/api/random"));
+  
+  
+  //     if (!response.ok) {
+  //       throw new Error(`Failed to fetch quotes: ${response.status} ${response.statusText}`);
+  //     }
+  
+  //     const rawData = await response.json();
+  //     const data = JSON.parse(rawData.contents);
+  
+  //     console.log("API Response:", data); // Debugging log
+  
+  //     if (Array.isArray(data) && data.length > 0) {
+  //       setQuote({
+  //         text: data[0].q,
+  //         author: data[0].a || "Unknown"
+  //       });
+  //     } else {
+  //       throw new Error("Unexpected API response format");
+  //     }
+  
+  //     setCopied(false);
+  //   } catch (error) {
+  //     console.error("Error fetching quote:", error.message);
+  //     setQuote({
+  //       text: `Error: ${error.message}`,
+  //       author: "Error"
+  //     });
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+  
+ 
+  
+  
+  
   useEffect(() => {
     fetchNewQuote();
   }, []);
-
 
 
   /**
